@@ -38,7 +38,7 @@ class Input {
 
 		keyStateMap.set(keyBinds.get(e.keyCode), true); // Here we don't reference a null pointer and then don't call it.
 	}
-
+	// I hope this function handler also is so bad I am never allowed to write function handlers again.
 	public static function onKeyUp(e:KeyboardEvent) {
 		if (!keyBinds.exists(e.keyCode))
 			return;
