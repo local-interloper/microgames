@@ -21,7 +21,6 @@ class Input {
 		Kb.K => KEY_ACTION,
 		Kb.L => KEY_ACTION2
 	];
-
 	public static var keyStateMap:Map<GameKeys, Bool> = [
 		KEY_MOVEUP => false,
 		KEY_MOVELEFT => false,
@@ -35,14 +34,13 @@ class Input {
 	public static function onKeyDown(e:KeyboardEvent) {
 		if (!keyBinds.exists(e.keyCode))
 			return;
-
-		keyStateMap.set(keyBinds.get(e.keyCode), true); // Here we don't reference a null pointer and then don't call it.
+		keyStateMap.set(keyBinds.get(e.keyCode), true); // Here we don't dereference a null pointer.
 	}
+
 	// I hope this function handler also is so bad I am never allowed to write function handlers again.
 	public static function onKeyUp(e:KeyboardEvent) {
 		if (!keyBinds.exists(e.keyCode))
 			return;
-
-		keyStateMap.set(keyBinds.get(e.keyCode), false); // Here we don't reference a null pointer and then don't call it.
+		keyStateMap.set(keyBinds.get(e.keyCode), false); // Here we don't dereference a null pointer.
 	}
 }
