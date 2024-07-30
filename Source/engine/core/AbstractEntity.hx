@@ -3,11 +3,10 @@ package engine.core;
 import haxe.Int64;
 
 abstract class AbstractEntity {
-	private var engine:Engine;
 	private var id:Int64;
 
-	public function new(engineRef:Engine) {
-		engine = engineRef;
+	public function new() {
+		
 	}
 
 	public function setId(id: Int64): Void {
@@ -19,6 +18,6 @@ abstract class AbstractEntity {
 	public function tick():Void {}
 
 	public function destroy():Void {
-		engine.activeScene.destroy(id);
+		Engine.activeScene.destroy(id);
 	}
 }

@@ -6,6 +6,6 @@ import game.entities.ExampleEntity;
 
 class ExampleScene extends AbstractScene {
     override function start() {
-        add(new ExampleEntity(engine));
+        add(new ExampleEntity());
     }
 }

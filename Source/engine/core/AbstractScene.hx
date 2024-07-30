@@ -9,8 +9,8 @@ abstract class AbstractScene {
 	var root:Sprite;
     var nextId: Int64 = 0;
 
-    public function new(engineRef: Engine){
-		engine = engineRef;
+    public function new(){
+		
 	}
 
 	public function start() {
