@@ -7,6 +7,6 @@ class Main extends Sprite
 {
 	public function new() {
 		super();
-		new Engine(this);
+		Engine.bootstrap;
 	}
 }
