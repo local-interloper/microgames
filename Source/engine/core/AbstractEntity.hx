@@ -5,6 +5,8 @@ import haxe.Int64;
 abstract class AbstractEntity {
 	private var id:Int64;
 
+	// Zed Haxe when?
+	// True and Real.
 	public function new() {
 		
 	}

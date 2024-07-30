@@ -6,7 +6,7 @@ import haxe.Int64;
 abstract class AbstractScene {
 	var entities = new Map<String, AbstractEntity>();
 	var engine: Engine;
-	var root:Sprite;
+	public var root:Sprite;
     var nextId: Int64 = 0;
 
     public function new(){
