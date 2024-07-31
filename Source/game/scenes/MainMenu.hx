@@ -13,6 +13,7 @@ import engine.entities.core.AbstractScene;
 
 class MainMenu extends AbstractScene {
     public var buttonList:Array<MainMenuButton> = [];
+    public var selectedIndex = 0;
     public override function init(root:Sprite){
         super.init(root);
         buttonList = [
@@ -26,6 +27,7 @@ class MainMenu extends AbstractScene {
                 Application.current.window.close();
             })
         ];
+        buttonList[0].focus();
         for (i in 0...buttonList.length){
             if(buttonList[i-1] == null) continue;
             var offset = buttonList[i-1].getPos().clone().add(new Point(0,20));
@@ -34,31 +36,36 @@ class MainMenu extends AbstractScene {
             this.add(buttonList[i]);
         }
     }
-    public var selectedIndex = 0;
-    private var lockKeyMap:Map<GameKey,Bool> = [KEY_MOVEDOWN => false, KEY_MOVEUP => false, KEY_ACTION => false];
+    
+    private var keyStateMap:Map<GameKey,Bool> = [KEY_MOVEDOWN => false, KEY_MOVEUP => false, KEY_ACTION => false];
+    
+    public function navigateMenu(dir:Int){
+        buttonList[selectedIndex].unfocus();
+        if(dir > 0) selectedIndex++;
+        else selectedIndex--;
+        if (selectedIndex < 0) selectedIndex = buttonList.length-1;
+        if (selectedIndex > buttonList.length-1) selectedIndex = 0;
+    }
+    
+    public function handleKey(key:GameKey, locked:Bool){
+        if(locked && Input.keyStateMap.get(key)) return;
+        if(locked) { keyStateMap.set(key,false); return; }
+
+        if(Input.keyStateMap.get(key)){
+            trace(key);
+            if(key == KEY_ACTION) { buttonList[selectedIndex].fire(); keyStateMap.set(key, true); return;}
+            buttonList[selectedIndex].unfocus();
+            if(key == KEY_MOVEUP) navigateMenu(-1);
+            if(key == KEY_MOVEDOWN) navigateMenu(1);
+            buttonList[selectedIndex].focus();
+            keyStateMap.set(key, true);
+        }
+    }
+    
     public override function tick(){
         super.tick();
-        if(Input.isKeyPressed(KEY_MOVEDOWN)&&!lockKeyMap.get(KEY_MOVEDOWN)){
-            selectedIndex++; 
-            lockKeyMap.set(KEY_MOVEDOWN,true);
-        }
-        else{
-            lockKeyMap.set(KEY_MOVEDOWN,false);
-        }
-        if(Input.isKeyPressed(KEY_MOVEUP)&&!lockKeyMap.get(KEY_MOVEUP)){
-            selectedIndex--; 
-            lockKeyMap.set(KEY_MOVEUP,true);
-        }
-        else{
-            lockKeyMap.set(KEY_MOVEUP,false);
-        }
-        if(selectedIndex < 0)                   selectedIndex = buttonList.length-1;
-        if(selectedIndex > buttonList.length-1) selectedIndex = 0;
-        if(Input.isKeyPressed(KEY_ACTION) && !lockKeyMap.get(KEY_ACTION)){
-            lockKeyMap.set(KEY_ACTION,true);
-        }
-        else{
-            lockKeyMap.set(KEY_ACTION,false);
+        for(kvp in keyStateMap.keyValueIterator()){
+            handleKey(kvp.key,kvp.value);
         }
     }
 }
