@@ -1,4 +1,4 @@
-package engine.core.ui;
+package engine.ui;
 
 import openfl.text.TextField;
 import openfl.geom.Point;

@@ -1,7 +1,7 @@
-package game.entities;
+package engine.entities;
 
 import engine.Engine;
-import engine.core.AbstractEntity;
+import engine.entities.core.AbstractEntity;
 
 class Timer extends AbstractEntity {
 	var defaultTime:Float;

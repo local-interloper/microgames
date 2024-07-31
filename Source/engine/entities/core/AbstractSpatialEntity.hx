@@ -1,4 +1,4 @@
-package engine.core;
+package engine.entities.core;
 
 import openfl.geom.Point;
 

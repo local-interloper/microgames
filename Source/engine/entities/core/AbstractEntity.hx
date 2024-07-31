@@ -1,4 +1,5 @@
-package engine.core;
+package engine.entities.core;
+
 
 import haxe.Int64;
 
