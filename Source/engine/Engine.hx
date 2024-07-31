@@ -5,7 +5,6 @@ import openfl.events.Event;
 import openfl.display.Sprite;
 import game.scenes.ExampleScene;
 import engine.core.AbstractScene;
-import Sys.time;
 
 class Engine {
 	public static var activeScene:AbstractScene = null;
@@ -27,12 +26,11 @@ class Engine {
 	private static var lastTickTime:Float = 0;
 	public static var delta:Float = 0;
 	public static function engineTick(e:Event) {
-		delta = Sys.time() * 1000 - lastTickTime;
-		trace(delta);
+		delta = Sys.time() - lastTickTime;
 		if (activeScene == null)
 			return;
 		activeScene.tick();
-		lastTickTime = Sys.time() * 1000;
+		lastTickTime = Sys.time();
 	}
 
 	public static function loadScene(scene:AbstractScene) {

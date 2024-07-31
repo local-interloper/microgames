@@ -60,10 +60,12 @@ class Input {
 		return value;
 	}
 
-	public static function getPoint(xPositive:GameKey, xNegative:GameKey, yPositive:GameKey, yNegative):Point {
-		return new Point(
-			getAxis(xPositive, xNegative), 
-			getAxis(yPositive, yNegative)
-		);
+	public static function getPoint(xPositive:GameKey, xNegative:GameKey, yPositive:GameKey, yNegative, normalized:Bool = true):Point {
+		var point = new Point(getAxis(xPositive, xNegative), getAxis(yPositive, yNegative));
+
+		if (normalized)
+			point.normalize(1.0);
+
+		return point;
 	}
 }

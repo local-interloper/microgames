@@ -37,6 +37,7 @@ abstract class AbstractScene {
 
         entity.setId(id);
         entities.set(Std.string(id), entity);
+		entities[Std.string(id)].start();
     }
 
 	public function destroy(entId:Int64) {
