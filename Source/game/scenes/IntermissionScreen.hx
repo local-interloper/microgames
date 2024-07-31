@@ -2,7 +2,7 @@ package game.scenes;
 
 import game.microgames.balance.scenes.BalanceGame;
 import engine.Engine;
-import engine.core.AbstractScene;
+import engine.entities.core.AbstractScene;
 
 class IntermissionScreen extends AbstractScene {
     var registeredMicrogames: Array<() -> AbstractScene> = [

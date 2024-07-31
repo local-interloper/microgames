@@ -1,7 +1,7 @@
 package game.microgames.balance.scenes;
 
 import engine.Engine;
-import engine.core.AbstractScene;
+import engine.entities.core.AbstractScene;
 import game.microgames.balance.entities.Lifter;
 
 class BalanceGame extends AbstractScene {

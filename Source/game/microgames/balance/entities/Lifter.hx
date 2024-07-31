@@ -2,7 +2,7 @@ package game.microgames.balance.entities;
 
 import engine.Engine;
 import openfl.geom.Point;
-import engine.core.AbstractSpriteEntity;
+import engine.entities.core.AbstractSpriteEntity;
 
 class Lifter extends AbstractSpriteEntity {
     var speed: Float = 0;
