@@ -8,8 +8,9 @@ class Lifter extends AbstractSpriteEntity {
     var speed: Float = 0;
 
     public function new() {
-        super("assets/microgames/balance/lifter.png", new Point(250, 250));
-        speed = Random.float(-15.0, 15.0);
+        super("assets/microgames/balance/lifter.png", CENTER, new Point(250, 250));
+        // speed = Random.float(-15.0, 15.0);
+        speed = 10;
     }
 
     override function tick() {

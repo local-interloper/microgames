@@ -1,5 +1,6 @@
 package engine.entities.core;
 
+import engine.types.AnchorPosition;
 import openfl.display.Sprite;
 import openfl.geom.Point;
 

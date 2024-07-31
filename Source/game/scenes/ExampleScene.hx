@@ -1,6 +1,6 @@
 package game.scenes;
 
-import engine.core.AbstractScene;
+import engine.entities.core.AbstractScene;
 
 import game.entities.Player;
 
