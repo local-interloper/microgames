@@ -13,7 +13,7 @@ class AbstractUIElement extends AbstractGraphicalEntity {
         this.textfield = new TextField();
         textfield.text = label;
         this.callback = callback;
-        sprite.addChild(textfield);
+        this.sprite.addChild(textfield);
     }
     function onSelect(){
         selected = true;
@@ -21,5 +21,9 @@ class AbstractUIElement extends AbstractGraphicalEntity {
     function onFire(){
         if (!selected) return;
         callback();
+    }
+    override function tick(){
+        super.tick();
+        trace(position);
     }
 }
