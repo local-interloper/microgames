@@ -6,8 +6,7 @@ class AbstractSpatialEntity extends AbstractEntity {
     var position: Point;
 
     function new(position: Point = null){
-        this.position = position ;
-        this.position = this.position != null ? this.position : new Point(0,0);
+        this.position = position != null ? position : new Point(0,0);
         super();
     }
 

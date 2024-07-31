@@ -1,5 +1,6 @@
 package engine;
 
+import game.scenes.MainMenu;
 import openfl.events.KeyboardEvent;
 import openfl.events.Event;
 import openfl.display.Sprite;
@@ -21,7 +22,7 @@ class Engine {
 		root.stage.addEventListener(KeyboardEvent.KEY_DOWN, Input.onKeyDown);
 		root.stage.addEventListener(KeyboardEvent.KEY_UP, Input.onKeyUp); 
 
-		loadScene(new IntermissionScreen());
+		loadScene(new MainMenu());
 	}
 	private static var lastTickTime:Float = 0;
 	public static var delta:Float = 0;
