@@ -9,8 +9,9 @@ class AbstractUIElement extends AbstractGraphicalEntity {
     var textfield:TextField;
     function new(label:String, callback:() -> Void, position:Point = null){
         super(position);
+        
         this.textfield = new TextField();
-        textfield.text = label;
+        this.textfield.text = label;
         this.callback = callback;
         this.sprite.addChild(textfield);
     }
