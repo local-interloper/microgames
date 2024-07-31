@@ -11,7 +11,13 @@ class AbstractSpatialEntity extends AbstractEntity {
         super();
     }
 
-    function translate(vel: Point) {
+    public function translate(vel: Point) {
         this.position = this.position.add(vel);
+    }
+    public function getPos(){
+        return this.position;
+    }
+    public function setPos(position:Point){
+        this.position = position;
     }
 }
