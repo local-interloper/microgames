@@ -6,12 +6,14 @@ import openfl.geom.Point;
 import openfl.Assets;
 
 class AbstractSprite extends AbstractSpatialEntity {
-    var sprite: Bitmap;
+    var sprite: Sprite;
 
     function new(spritePath: String, position: Point = null) {
         super(position != null ? position : new Point(0,0));
+        sprite = new Sprite();
         var bitmapData = Assets.getBitmapData(spritePath);
-        sprite = new Bitmap(bitmapData);
+        var bitmap = new Bitmap(bitmapData);
+        sprite.addChild(bitmap);
         Engine.activeScene.root.addChild(sprite);
     }
 
