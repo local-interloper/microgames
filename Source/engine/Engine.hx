@@ -3,7 +3,7 @@ package engine;
 import openfl.events.KeyboardEvent;
 import openfl.events.Event;
 import openfl.display.Sprite;
-import engine.entities.core.AbstractScene;
+import engine.core.AbstractScene;
 import game.scenes.IntermissionScreen;
 
 class Engine {
