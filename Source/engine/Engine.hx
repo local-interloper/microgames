@@ -3,8 +3,8 @@ package engine;
 import openfl.events.KeyboardEvent;
 import openfl.events.Event;
 import openfl.display.Sprite;
-import game.microgames.balance.scenes.BalanceGame;
 import engine.core.AbstractScene;
+import game.scenes.IntermissionScreen;
 
 class Engine {
 	public static var activeScene:AbstractScene = null;
@@ -21,7 +21,7 @@ class Engine {
 		root.stage.addEventListener(KeyboardEvent.KEY_DOWN, Input.onKeyDown);
 		root.stage.addEventListener(KeyboardEvent.KEY_UP, Input.onKeyUp); 
 
-		loadScene(new BalanceGame());
+		loadScene(new IntermissionScreen());
 	}
 	private static var lastTickTime:Float = 0;
 	public static var delta:Float = 0;
