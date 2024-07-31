@@ -6,10 +6,10 @@ class AbstractSpatialEntity extends AbstractEntity {
     var position: Point;
 
     function new(position: Point = null){
-        this.position != null ? this.position : new Point(0,0);
+        this.position = position ;
+        this.position = this.position != null ? this.position : new Point(0,0);
+        trace(this.position);
         super();
-
-        this.position = position;
     }
 
     function translate(vel: Point) {

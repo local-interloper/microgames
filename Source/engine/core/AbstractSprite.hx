@@ -16,7 +16,5 @@ class AbstractSprite extends AbstractGraphicalEntity {
 
     override function tick() {
         super.tick();
-        sprite.x = position.x;
-        sprite.y = position.y;
     }
 }
