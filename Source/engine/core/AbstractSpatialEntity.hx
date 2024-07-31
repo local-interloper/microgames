@@ -5,7 +5,8 @@ import openfl.geom.Point;
 class AbstractSpatialEntity extends AbstractEntity {
     var position: Point;
 
-    function new(position: Point){
+    function new(position: Point = null){
+        this.position != null ? this.position : new Point(0,0);
         super();
 
         this.position = position;

@@ -5,16 +5,13 @@ import openfl.display.Sprite;
 import openfl.geom.Point;
 import openfl.Assets;
 
-class AbstractSprite extends AbstractSpatialEntity {
-    var sprite: Sprite;
+class AbstractSprite extends AbstractGraphicalEntity {
 
     function new(spritePath: String, position: Point = null) {
-        super(position != null ? position : new Point(0,0));
-        sprite = new Sprite();
+        super(position);
         var bitmapData = Assets.getBitmapData(spritePath);
         var bitmap = new Bitmap(bitmapData);
         sprite.addChild(bitmap);
-        Engine.activeScene.root.addChild(sprite);
     }
 
     override function tick() {
