@@ -21,7 +21,7 @@ class Engine {
 		root.stage.addEventListener(KeyboardEvent.KEY_DOWN, Input.onKeyDown);
 		root.stage.addEventListener(KeyboardEvent.KEY_UP, Input.onKeyUp); 
 
-		loadScene(new BalanceGame());
+		loadScene(new game.scenes.MainMenu());
 	}
 	private static var lastTickTime:Float = 0;
 	public static var delta:Float = 0;
