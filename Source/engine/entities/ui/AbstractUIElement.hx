@@ -1,7 +1,8 @@
-package engine.ui;
+package engine.entities.ui;
 
 import openfl.text.TextField;
 import openfl.geom.Point;
+import engine.entities.core.AbstractGraphicalEntity;
 
 class AbstractUIElement extends AbstractGraphicalEntity {
     var callback:() -> Void;
