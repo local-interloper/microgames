@@ -1,5 +1,7 @@
 package game.entities;
 
+import engine.Input;
+import openfl.geom.Point;
 import engine.core.AbstractSprite;
 
 
@@ -10,6 +12,6 @@ class Player extends AbstractSprite {
 
     override function tick() {
         super.tick();
-        this.position.x++;
+        var dir = new Point(0,0);
     }
 }
