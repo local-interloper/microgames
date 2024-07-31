@@ -24,6 +24,5 @@ class AbstractUIElement extends AbstractGraphicalEntity {
     }
     override function tick(){
         super.tick();
-        trace(position);
     }
 }

@@ -15,7 +15,6 @@ class MainMenu extends AbstractScene {
     public var buttonList:Array<MainMenuButton> = [];
     public override function init(root:Sprite){
         super.init(root);
-        trace("perkele");
         buttonList = [
             new MainMenuButton("Start Game",()->{
                 Engine.loadScene(new IntermissionScreen());
@@ -62,6 +61,4 @@ class MainMenu extends AbstractScene {
             lockKeyMap.set(KEY_ACTION,false);
         }
     }
-
-
 }

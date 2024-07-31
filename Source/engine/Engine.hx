@@ -1,10 +1,10 @@
 package engine;
 
-import game.scenes.MainMenu;
+import openfl.Lib;
 import openfl.events.KeyboardEvent;
 import openfl.events.Event;
 import openfl.display.Sprite;
-import engine.core.AbstractScene;
+import engine.entities.core.AbstractScene;
 import game.scenes.IntermissionScreen;
 
 class Engine {
@@ -22,7 +22,9 @@ class Engine {
 		root.stage.addEventListener(KeyboardEvent.KEY_DOWN, Input.onKeyDown);
 		root.stage.addEventListener(KeyboardEvent.KEY_UP, Input.onKeyUp); 
 
-		loadScene(new MainMenu());
+		Lib.current.stage.displayState = FULL_SCREEN_INTERACTIVE;
+
+		loadScene(new IntermissionScreen());
 	}
 	private static var lastTickTime:Float = 0;
 	public static var delta:Float = 0;
