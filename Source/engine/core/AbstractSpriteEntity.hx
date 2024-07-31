@@ -1,11 +1,10 @@
 package engine.core;
 
 import openfl.display.Bitmap;
-import openfl.display.Sprite;
 import openfl.geom.Point;
 import openfl.Assets;
 
-class AbstractSprite extends AbstractGraphicalEntity {
+class AbstractSpriteEntity extends AbstractGraphicalEntity {
 
     function new(spritePath: String, position: Point = null) {
         super(position);
@@ -16,5 +15,11 @@ class AbstractSprite extends AbstractGraphicalEntity {
 
     override function tick() {
         super.tick();
+    }
+
+    override function destroy() {
+        super.destroy();
+
+        sprite.removeChildren();
     }
 }

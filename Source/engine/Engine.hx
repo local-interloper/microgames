@@ -32,7 +32,6 @@ class Engine {
 			return;
 		activeScene.tick();
 		lastTickTime = Sys.time();
-		trace(delta);
 	}
 
 	public static function loadScene(scene:AbstractScene) {

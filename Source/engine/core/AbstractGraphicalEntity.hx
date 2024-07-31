@@ -1,7 +1,5 @@
 package engine.core;
 
-import openfl.utils.Assets;
-import openfl.display.Bitmap;
 import openfl.display.Sprite;
 import openfl.geom.Point;
 

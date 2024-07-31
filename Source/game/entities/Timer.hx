@@ -21,18 +21,15 @@ class Timer extends AbstractEntity {
 
 	override function tick() {
 		super.tick();
-        time -= Engine.delta;
-		/*
-
-			if (time <= 0) {
-				callback();
-				if (repeating) {
-					reset();
-				} else {
-					destroy();
-				}
+		time -= Engine.delta;
+		if (time <= 0) {
+			callback();
+			if (repeating) {
+				reset();
+			} else {
+				destroy();
 			}
-		 */
+		}
 	}
 
 	function reset() {
