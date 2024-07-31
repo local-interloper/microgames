@@ -26,11 +26,13 @@ class Engine {
 	private static var lastTickTime:Float = 0;
 	public static var delta:Float = 0;
 	public static function engineTick(e:Event) {
+		if(lastTickTime != 0) 
 		delta = Sys.time() - lastTickTime;
 		if (activeScene == null)
 			return;
 		activeScene.tick();
 		lastTickTime = Sys.time();
+		trace(delta);
 	}
 
 	public static function loadScene(scene:AbstractScene) {
