@@ -49,7 +49,6 @@ class MainMenu extends AbstractScene {
         var lastKeyState = Input.lastKeyState.get(key);
         if(lastKeyState) return;
         if(keyState){
-            trace(key);
             if(key == KEY_ACTION) buttonList[selectedIndex].fire();
             buttonList[selectedIndex].unfocus();
             if(key == KEY_MOVEUP) navigateMenu(-1);
