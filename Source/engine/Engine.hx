@@ -1,5 +1,7 @@
 package engine;
 
+import openfl.geom.Point;
+import game.scenes.MainMenu;
 import openfl.Lib;
 import openfl.events.KeyboardEvent;
 import openfl.events.Event;
@@ -17,24 +19,40 @@ class Engine {
 		root.addEventListener(Event.ADDED_TO_STAGE,init);
 	}
 
+	static function centerScreen(){
+		var scalar = (root.stage.stageHeight/1024);
+		var offset = new Point(root.stage.stageWidth/2 - (1024*scalar)/2, root.stage.stageHeight/2);
+		var screenMask = new Sprite();
+		root.x = offset.x;
+		screenMask.x = offset.x;
+		screenMask.graphics.beginFill(0x000000);
+		screenMask.graphics.drawRect(0,0,1024,1024);
+		root.stage.mask = screenMask;
+		root.stage.addChild(screenMask);
+		// root.y = centerPoint.y;
+		root.scaleX = root.scaleY = scalar;
+		screenMask.scaleX = screenMask.scaleY = scalar;
+
+	}
+
 	public static function init(e:Event) {
 		root.stage.addEventListener(Event.ENTER_FRAME, engineTick);
 		root.stage.addEventListener(KeyboardEvent.KEY_DOWN, Input.onKeyDown);
 		root.stage.addEventListener(KeyboardEvent.KEY_UP, Input.onKeyUp); 
-
 		Lib.current.stage.displayState = FULL_SCREEN_INTERACTIVE;
-
-		loadScene(new IntermissionScreen());
+		centerScreen();
+		loadScene(new MainMenu());
 	}
 	private static var lastTickTime:Float = 0;
 	public static var delta:Float = 0;
 	public static function engineTick(e:Event) {
 		if(lastTickTime != 0) 
-		delta = Sys.time() - lastTickTime;
+			delta = Sys.time() - lastTickTime;
 		if (activeScene == null)
 			return;
 		activeScene.tick();
 		lastTickTime = Sys.time();
+		Input.tick();
 	}
 
 	public static function loadScene(scene:AbstractScene) {

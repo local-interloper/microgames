@@ -3,7 +3,7 @@
 	
 	<meta title="Microgames" package="com.sample.microgames" version="1.0.0" company="Company Name" />
 	<app main="Main" path="Export" file="Microgames" />
-	<window background="#FFFFFF" fps="300" />
+	<window background="#000000" fps="300" />
 	<source path="Source" />
 	
 	<haxelib name="openfl" />

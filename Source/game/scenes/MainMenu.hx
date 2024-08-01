@@ -28,17 +28,14 @@ class MainMenu extends AbstractScene {
             })
         ];
         buttonList[0].focus();
+        buttonList[0].setPos(buttonList[0].getPos().add(new Point(1024/2-148,0)));
         for (i in 0...buttonList.length){
-            if(buttonList[i-1] == null) continue;
-            var offset = buttonList[i-1].getPos().clone().add(new Point(0,20));
-            buttonList[i].setPos(offset); 
-            trace(buttonList[i-1].getPos());
+            if(i != 0) buttonList[i].setPos(buttonList[i-1].getPos().clone().add(new Point(0,20))); 
             this.add(buttonList[i]);
         }
+        trace(buttonList);
     }
-    
-    private var keyStateMap:Map<GameKey,Bool> = [KEY_MOVEDOWN => false, KEY_MOVEUP => false, KEY_ACTION => false];
-    
+        
     public function navigateMenu(dir:Int){
         buttonList[selectedIndex].unfocus();
         if(dir > 0) selectedIndex++;
@@ -47,25 +44,24 @@ class MainMenu extends AbstractScene {
         if (selectedIndex > buttonList.length-1) selectedIndex = 0;
     }
     
-    public function handleKey(key:GameKey, locked:Bool){
-        if(locked && Input.keyStateMap.get(key)) return;
-        if(locked) { keyStateMap.set(key,false); return; }
-
-        if(Input.keyStateMap.get(key)){
+    public function handleKey(key:GameKey){
+        var keyState = Input.keyStateMap.get(key);
+        var lastKeyState = Input.lastKeyState.get(key);
+        if(lastKeyState) return;
+        if(keyState){
             trace(key);
-            if(key == KEY_ACTION) { buttonList[selectedIndex].fire(); keyStateMap.set(key, true); return;}
+            if(key == KEY_ACTION) buttonList[selectedIndex].fire();
             buttonList[selectedIndex].unfocus();
             if(key == KEY_MOVEUP) navigateMenu(-1);
             if(key == KEY_MOVEDOWN) navigateMenu(1);
             buttonList[selectedIndex].focus();
-            keyStateMap.set(key, true);
         }
     }
     
     public override function tick(){
         super.tick();
-        for(kvp in keyStateMap.keyValueIterator()){
-            handleKey(kvp.key,kvp.value);
+        for(kvp in Input.keyStateMap.keyValueIterator()){
+            handleKey(kvp.key);
         }
     }
 }

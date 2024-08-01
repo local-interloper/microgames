@@ -30,6 +30,7 @@ class Input {
 		KEY_ACTION => false,
 		KEY_ACTION2 => false
 	];
+	public static var lastKeyState:Map<GameKey,Bool> = keyStateMap.copy();
 
 	// I hope this function handler is so bad I am never allowed to write function handlers again.
 	public static function onKeyDown(e:KeyboardEvent) {
@@ -68,4 +69,7 @@ class Input {
 
 		return point;
 	}
+	public static function tick(){
+		lastKeyState = keyStateMap.copy();
+	};
 }

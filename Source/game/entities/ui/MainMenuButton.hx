@@ -11,6 +11,6 @@ class MainMenuButton extends AbstractUIElement{
         textfield.textColor = 0xffff0000;
     }
     public function unfocus(){
-        textfield.textColor = 0x00000000;
+        textfield.textColor = 0xffffffff;
     }
 }
