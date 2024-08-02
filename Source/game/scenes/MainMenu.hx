@@ -8,6 +8,7 @@ import engine.Engine;
 import openfl.display.Sprite;
 import game.entities.ui.MainMenuButton;
 import engine.entities.core.AbstractScene;
+import game.scenes.devscenes.AnimationTestScene;
 
 
 
@@ -19,6 +20,9 @@ class MainMenu extends AbstractScene {
         buttonList = [
             new MainMenuButton("Start Game",()->{
                 Engine.loadScene(new IntermissionScreen());
+            }),
+            new MainMenuButton("Test Animations",()->{
+                Engine.loadScene(new AnimationTestScene());
             }),
             new MainMenuButton("Settings",()->{
                 trace("unimplemented");

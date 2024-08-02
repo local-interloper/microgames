@@ -5,7 +5,7 @@ import openfl.display.Sprite;
 import openfl.geom.Point;
 
 class AbstractGraphicalEntity extends AbstractSpatialEntity {
-    var sprite: Sprite;
+    public var sprite: Sprite;
     
     function new(position: Point = null) {
         super(position);
