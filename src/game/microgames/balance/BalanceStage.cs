@@ -16,8 +16,8 @@ public class Balance: AbstractScene {
         timer.Finished += () => {
             Engine.LoadScene(new MicrogamesScene());
         };
-        timer.Begin();
 
+        timer.Begin();
         AddEntity(timer);
     }
 }
