@@ -16,31 +16,4 @@ public class Lifter : AbstractSpriteEntity
     {
         Rotation += 15 * delta;
     }
-
-    public override void Render()
-    {
-        base.Render();
-
-        var marker = AssetServer.GetTexture("assets/textures/debug/marker.png");
-        Raylib.DrawTexturePro(
-            marker,
-            new Rectangle
-            {
-                X = 0,
-                Y = 0,
-                Width = marker.Width,
-                Height = marker.Height
-            },
-            new Rectangle
-            {
-                X = Position.X,
-                Y = Position.Y,
-                Width = marker.Width,
-                Height = marker.Height,
-            },
-            new Vector2(32, 32),
-            Rotation,
-            Color.White
-        );
-    }
 }
