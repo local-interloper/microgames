@@ -13,7 +13,8 @@ public abstract class AbstractSpriteEntity : AbstractSpatialEntity
 
     public override void Render()
     {
-        Raylib.DrawTexture(sprite, (int)Position.X, (int)Position.Y, Color.White);
+        Console.WriteLine(Origin);
+
         Raylib.DrawTexturePro(
             sprite,
             new Rectangle
@@ -27,10 +28,10 @@ public abstract class AbstractSpriteEntity : AbstractSpatialEntity
             {
                 X = Position.X,
                 Y = Position.Y,
-                Width = sprite.Width,
-                Height = sprite.Height
+                Width = sprite.Width * Scale,
+                Height = sprite.Height * Scale
             },
-            Origin,
+            Origin*Scale,
             Rotation,
             Color.White
         );

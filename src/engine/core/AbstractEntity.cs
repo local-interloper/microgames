@@ -14,7 +14,7 @@ public class AbstractEntity
 
     }
 
-    virtual public void Tick(double delta){
+    virtual public void Tick(float delta){
         
     }
 

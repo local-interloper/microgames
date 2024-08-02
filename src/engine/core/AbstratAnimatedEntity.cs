@@ -39,7 +39,7 @@ public class AbstractAnimatedEntity : AbstractSpatialEntity
         };
     }
 
-    public override void Tick(double delta)
+    public override void Tick(float delta)
     {
         base.Tick(delta);
         _state.FrameTimer -= delta;

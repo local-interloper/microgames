@@ -3,7 +3,8 @@ using Raylib_cs;
 
 namespace engine.core.util;
 
-enum GameKey{
+enum GameKey
+{
     KeyUp,
     KeyDown,
     KeyLeft,
@@ -37,15 +38,16 @@ static class Input
         return dict;
     }
 
-   
-    public static Vector2 GetAxes(){
+
+    public static Vector2 GetAxes()
+    {
         var xComponent = 0;
         var yComponent = 0;
-        if(GetKeyStates().GetValueOrDefault(GameKey.KeyUp)) yComponent--;
-        if(GetKeyStates().GetValueOrDefault(GameKey.KeyDown)) yComponent++;
-        if(GetKeyStates().GetValueOrDefault(GameKey.KeyLeft)) xComponent--;
-        if(GetKeyStates().GetValueOrDefault(GameKey.KeyRight)) xComponent++;
-        return new Vector2(xComponent,yComponent);
+        if (GetKeyStates().GetValueOrDefault(GameKey.KeyUp)) yComponent--;
+        if (GetKeyStates().GetValueOrDefault(GameKey.KeyDown)) yComponent++;
+        if (GetKeyStates().GetValueOrDefault(GameKey.KeyLeft)) xComponent--;
+        if (GetKeyStates().GetValueOrDefault(GameKey.KeyRight)) xComponent++;
+        return new Vector2(xComponent, yComponent);
     }
     public static float GetAxis(Axis axis){
         return axis == Axis.X ? GetAxes().X: GetAxes().Y;

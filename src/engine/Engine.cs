@@ -2,7 +2,7 @@ namespace engine;
 
 using System.Numerics;
 using engine.core;
-using game.testclasses;
+using game.microgames;
 using Raylib_cs;
 
 public static class Engine
@@ -19,9 +19,11 @@ public static class Engine
         Raylib.SetConfigFlags(ConfigFlags.ResizableWindow);
         Raylib.InitWindow(InitWindowWidth, InitWindowHeight, "microgames");
         Raylib.SetTargetFPS(300);
-        Raylib.ToggleFullscreen();
+        // Raylib.ToggleFullscreen();
+        Raylib.MaximizeWindow();
 
-        LoadScene(new TestScene());
+        Scene = new MicrogamesScene();
+        Scene.Start();
         Mainloop();
 
         Raylib.CloseWindow();

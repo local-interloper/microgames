@@ -12,7 +12,8 @@ public class AbstractScene
 
     public Texture2D? Background;
 
-    public AbstractScene(){
+    public AbstractScene()
+    {
         SceneRenderTexture = Raylib.LoadRenderTexture(Engine.GameScreenWidth, Engine.GameScreenHeight);
         Raylib.SetTextureFilter(SceneRenderTexture.Texture, TextureFilter.Point);  // Texture scale filter to use
     }
@@ -33,7 +34,7 @@ public class AbstractScene
 
     }
 
-    public virtual void Tick(double delta)
+    public virtual void Tick(float delta)
     {
         foreach (var entity in _entities)
         {
@@ -43,14 +44,34 @@ public class AbstractScene
     public float Scale;
     public virtual void Render()
     {
-        Scale = Math.Min((float)Raylib.GetScreenWidth()/Engine.GameScreenWidth, (float)Raylib.GetScreenHeight()/Engine.GameScreenHeight);
+        Scale = Math.Min((float)Raylib.GetScreenWidth() / Engine.GameScreenWidth, (float)Raylib.GetScreenHeight() / Engine.GameScreenHeight);
         // Raylib.BeginDrawing();
         Raylib.BeginTextureMode(SceneRenderTexture);
         Raylib.ClearBackground(Color.Black);
         Raylib.DrawText("If executed inside a window,\nyou can resize the window,\nand see the screen scaling!", 10, 25, 20, Color.White);
-        
-        if(Background is not null) {
-            Raylib.DrawTexture((Texture2D)Background, 0, 0, Color.White);
+
+        if (Background is not null)
+        {
+            Raylib.DrawTexturePro(
+                (Texture2D)Background,
+                new Rectangle
+                {
+                    X = 0,
+                    Y = 0,
+                    Width = 1024,
+                    Height = 1024,
+                },
+                new Rectangle
+                {
+                    X = 0,
+                    Y = 0,
+                    Width = 1024 * (Engine.Scene is not null ? Engine.Scene.Scale : 1),
+                    Height = 1024 * (Engine.Scene is not null ? Engine.Scene.Scale : 1),
+                },
+                Vector2.Zero,
+                0,
+                Color.White
+            );
         }
 
         foreach (var entity in _entities)
@@ -62,12 +83,15 @@ public class AbstractScene
         Raylib.EndTextureMode();
     }
 
-    public void Destroy(AbstractEntity entity) {
+    public void Destroy(AbstractEntity entity)
+    {
         _destructionQueue.Enqueue(entity);
     }
 
-    public void DestroyQueued() {
-        while (_destructionQueue.Count > 0) {
+    public void DestroyQueued()
+    {
+        while (_destructionQueue.Count > 0)
+        {
             var entity = _destructionQueue.Dequeue();
             entity.OnDestroy();
             _entities.Remove(entity);
