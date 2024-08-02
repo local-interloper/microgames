@@ -33,7 +33,6 @@ class MainMenu extends AbstractScene {
             if(i != 0) buttonList[i].setPos(buttonList[i-1].getPos().clone().add(new Point(0,20))); 
             this.add(buttonList[i]);
         }
-        trace(buttonList);
     }
         
     public function navigateMenu(dir:Int){
