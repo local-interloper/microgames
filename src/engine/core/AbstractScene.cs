@@ -65,8 +65,8 @@ public class AbstractScene
                 {
                     X = 0,
                     Y = 0,
-                    Width = 1024 * (Engine.Scene is not null ? Engine.Scene.Scale : 1),
-                    Height = 1024 * (Engine.Scene is not null ? Engine.Scene.Scale : 1),
+                    Width = 1024,
+                    Height = 1024,
                 },
                 Vector2.Zero,
                 0,
