@@ -23,8 +23,8 @@ enum Axis
 
 static class Input
 {
-    public static Dictionary<GameKey,Boolean> GetKeyStates(){
-        var dict = new Dictionary<GameKey,Boolean>();
+    public static Dictionary<GameKey,bool> GetKeyStates(){
+        var dict = new Dictionary<GameKey,bool>();
         dict.Add(GameKey.KeyUp,Raylib.IsKeyDown(KeyboardKey.W));
         dict.Add(GameKey.KeyDown,Raylib.IsKeyDown(KeyboardKey.S));
         dict.Add(GameKey.KeyLeft,Raylib.IsKeyDown(KeyboardKey.A));
@@ -45,7 +45,7 @@ static class Input
         if(GetKeyStates().GetValueOrDefault(GameKey.KeyRight)) xComponent++;
         return new Vector2(xComponent,yComponent);
     }
-    public static float getAxis(Axis axis){
+    public static float GetAxis(Axis axis){
         return axis == Axis.X ? GetAxes().X: GetAxes().Y;
     }
 }
