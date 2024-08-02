@@ -1,4 +1,3 @@
-using System.Numerics;
 using engine.core;
 using Raylib_cs;
 
@@ -13,8 +12,6 @@ public abstract class AbstractSpriteEntity : AbstractSpatialEntity
 
     public override void Render()
     {
-        Console.WriteLine(Origin);
-
         Raylib.DrawTexturePro(
             sprite,
             new Rectangle

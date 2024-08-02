@@ -8,6 +8,7 @@ public class AbstractScene
 {
     private static HashSet<AbstractEntity> _entities = new();
     private static Queue<AbstractEntity> _destructionQueue = new();
+    public float Scale;
     public RenderTexture2D SceneRenderTexture;
 
     public Texture2D? Background;
@@ -41,7 +42,6 @@ public class AbstractScene
             entity.Tick(delta);
         }
     }
-    public float Scale;
     public virtual void Render()
     {
         Scale = Math.Min((float)Raylib.GetScreenWidth() / Engine.GameScreenWidth, (float)Raylib.GetScreenHeight() / Engine.GameScreenHeight);
@@ -95,6 +95,11 @@ public class AbstractScene
             var entity = _destructionQueue.Dequeue();
             entity.OnDestroy();
             _entities.Remove(entity);
+        }
+    }
+    public void DestroyAll() {
+        foreach (var entity in _entities) {
+            Destroy(entity);
         }
     }
 }
