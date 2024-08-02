@@ -24,14 +24,16 @@ enum Axis
 static class Input
 {
     public static Dictionary<GameKey,bool> GetKeyStates(){
-        var dict = new Dictionary<GameKey,bool>();
-        dict.Add(GameKey.KeyUp,Raylib.IsKeyDown(KeyboardKey.W));
-        dict.Add(GameKey.KeyDown,Raylib.IsKeyDown(KeyboardKey.S));
-        dict.Add(GameKey.KeyLeft,Raylib.IsKeyDown(KeyboardKey.A));
-        dict.Add(GameKey.KeyRight,Raylib.IsKeyDown(KeyboardKey.D));
-        dict.Add(GameKey.KeyAction,Raylib.IsKeyDown(KeyboardKey.J));
-        dict.Add(GameKey.KeyAction2,Raylib.IsKeyDown(KeyboardKey.K));
-        dict.Add(GameKey.KeyMenuSelect,Raylib.IsKeyDown(KeyboardKey.Space));
+        var dict = new Dictionary<GameKey, bool>
+        {
+            { GameKey.KeyUp, Raylib.IsKeyDown(KeyboardKey.W) },
+            { GameKey.KeyDown, Raylib.IsKeyDown(KeyboardKey.S) },
+            { GameKey.KeyLeft, Raylib.IsKeyDown(KeyboardKey.A) },
+            { GameKey.KeyRight, Raylib.IsKeyDown(KeyboardKey.D) },
+            { GameKey.KeyAction, Raylib.IsKeyDown(KeyboardKey.J) },
+            { GameKey.KeyAction2, Raylib.IsKeyDown(KeyboardKey.K) },
+            { GameKey.KeyMenuSelect, Raylib.IsKeyDown(KeyboardKey.Space) }
+        };
         return dict;
     }
 
