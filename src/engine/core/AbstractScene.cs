@@ -1,3 +1,4 @@
+using System.Numerics;
 using Raylib_cs;
 
 namespace engine.core;
@@ -6,6 +7,11 @@ public class AbstractScene
 {
     private static HashSet<AbstractEntity> _entities = new();
     private static Queue<AbstractEntity> _destructionQueue = new();
+    public RenderTexture2D SceneRenderTexture;
+    public AbstractScene(){
+        SceneRenderTexture = Raylib.LoadRenderTexture(Engine.GameScreenWidth, Engine.GameScreenHeight);
+        Raylib.SetTextureFilter(SceneRenderTexture.Texture, TextureFilter.Point);  // Texture scale filter to use
+    }
 
     public void AddEntity(AbstractEntity entity)
     {
@@ -30,18 +36,23 @@ public class AbstractScene
             entity.Tick(delta);
         }
     }
-
+    public float Scale;
     public virtual void Render()
     {
-        Raylib.BeginDrawing();
+        Scale = Math.Min((float)Raylib.GetScreenWidth()/Engine.GameScreenWidth, (float)Raylib.GetScreenHeight()/Engine.GameScreenHeight);
+        // Raylib.BeginDrawing();
+        Raylib.BeginTextureMode(SceneRenderTexture);
         Raylib.ClearBackground(Color.Black);
+        Raylib.DrawText("If executed inside a window,\nyou can resize the window,\nand see the screen scaling!", 10, 25, 20, Color.White);
+        
 
         foreach (var entity in _entities)
         {
             entity.Render();
         }
 
-        Raylib.EndDrawing();
+        // Raylib.EndDrawing();
+        Raylib.EndTextureMode();
     }
 
     public void Destroy(AbstractEntity entity) {
