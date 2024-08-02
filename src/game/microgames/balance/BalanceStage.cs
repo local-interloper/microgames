@@ -11,6 +11,12 @@ public class Balance: AbstractScene {
         AddEntity(new Lifter());
     }
 
+    public override void Start()
+    {
+        base.Start();
+        Console.WriteLine("XD");
+    }
+
     public override void Tick(float delta)
     {
         base.Tick(delta);

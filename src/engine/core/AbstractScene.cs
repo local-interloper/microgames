@@ -6,8 +6,8 @@ namespace engine.core;
 
 public class AbstractScene
 {
-    private static HashSet<AbstractEntity> _entities = new();
-    private static Queue<AbstractEntity> _destructionQueue = new();
+    private HashSet<AbstractEntity> _entities = new();
+    private Queue<AbstractEntity> _destructionQueue = new();
     public float Scale;
     public RenderTexture2D SceneRenderTexture;
 
@@ -45,7 +45,7 @@ public class AbstractScene
     public virtual void Render()
     {
         Scale = Math.Min((float)Raylib.GetScreenWidth() / Engine.GameScreenWidth, (float)Raylib.GetScreenHeight() / Engine.GameScreenHeight);
-        // Raylib.BeginDrawing();
+
         Raylib.BeginTextureMode(SceneRenderTexture);
         Raylib.ClearBackground(Color.Black);
         Raylib.DrawText("If executed inside a window,\nyou can resize the window,\nand see the screen scaling!", 10, 25, 20, Color.White);
@@ -79,7 +79,6 @@ public class AbstractScene
             entity.Render();
         }
 
-        // Raylib.EndDrawing();
         Raylib.EndTextureMode();
     }
 
@@ -95,11 +94,6 @@ public class AbstractScene
             var entity = _destructionQueue.Dequeue();
             entity.OnDestroy();
             _entities.Remove(entity);
-        }
-    }
-    public void DestroyAll() {
-        foreach (var entity in _entities) {
-            Destroy(entity);
         }
     }
 }
