@@ -1,9 +1,8 @@
+namespace engine.entities.core;
+
 using System.Numerics;
 using engine.types.spatial;
 using Raylib_cs;
-
-namespace engine.core;
-
 
 public abstract class AbstractSpatialEntity : AbstractEntity
 {

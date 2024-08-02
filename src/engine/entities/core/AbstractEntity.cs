@@ -1,4 +1,4 @@
-namespace engine.core;
+namespace engine.entities.core;
 
 public class AbstractEntity
 {

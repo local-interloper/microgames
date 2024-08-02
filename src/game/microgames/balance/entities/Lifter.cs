@@ -1,5 +1,6 @@
 using System.Numerics;
 using engine.core.util;
+using engine.entities.core;
 
 namespace game.microgames.balance.entities;
 
@@ -20,7 +21,7 @@ public class Lifter : AbstractSpriteEntity
     public override void Start()
     {
         base.Start();
-        _velocity = Globals.RNG.NextSingle() - 0.5f;
+        _velocity = Globals.RNG.NextSingle() - 0.2f;
     }
 
     public override void Tick(float delta)

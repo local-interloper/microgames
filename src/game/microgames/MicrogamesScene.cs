@@ -2,6 +2,7 @@ namespace game.microgames;
 
 using engine;
 using engine.core;
+using engine.entities.core;
 using game.microgames;
 
 public class MicrogamesScene : AbstractScene

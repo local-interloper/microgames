@@ -1,29 +1,23 @@
+using System.Xml.Schema;
 using engine;
-using engine.core;
+using engine.entities.core;
+using engine.entities.util;
 using game.microgames;
 using game.microgames.balance.entities;
 
 public class Balance: AbstractScene {
-    float _stageTime = 10;
 
     public Balance() {
         Background = AssetServer.GetTexture("assets/microgames/balance/background.png");
         AddEntity(new Lifter());
-    }
 
-    public override void Start()
-    {
-        base.Start();
-        Console.WriteLine("XD");
-    }
+        var timer = new TimerEntity(5);
 
-    public override void Tick(float delta)
-    {
-        base.Tick(delta);
-        _stageTime -= delta;
-
-        if (_stageTime <= 0) {
+        timer.Finished += () => {
             Engine.LoadScene(new MicrogamesScene());
-        }
+        };
+        timer.Begin();
+
+        AddEntity(timer);
     }
 }

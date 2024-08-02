@@ -1,8 +1,8 @@
+namespace engine.entities.core;
+
 using System.Numerics;
 using engine.types.animation;
 using Raylib_cs;
-
-namespace engine.core;
 
 public class AbstractAnimatedEntity : AbstractSpatialEntity
 {

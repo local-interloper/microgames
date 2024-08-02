@@ -1,4 +1,5 @@
 using engine.core;
+using engine.entities.core;
 
 public delegate AbstractScene SceneGenerator();
 

@@ -1,8 +1,8 @@
+namespace engine.entities.core;
+
 using System.Numerics;
 using System.Reflection.Metadata;
 using Raylib_cs;
-
-namespace engine.core;
 
 public class AbstractScene
 {

@@ -2,6 +2,7 @@ namespace engine;
 
 using System.Numerics;
 using engine.core;
+using engine.entities.core;
 using game.microgames;
 using Raylib_cs;
 

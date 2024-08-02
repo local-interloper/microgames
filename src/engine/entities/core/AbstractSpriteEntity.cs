@@ -1,4 +1,5 @@
-using engine.core;
+namespace engine.entities.core;
+
 using Raylib_cs;
 
 public abstract class AbstractSpriteEntity : AbstractSpatialEntity
