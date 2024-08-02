@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/marino/Projects/microgames/microgames.csproj": {}
+    "/home/marino/Projects/microgames-git/microgames.csproj": {}
   },
   "projects": {
-    "/home/marino/Projects/microgames/microgames.csproj": {
+    "/home/marino/Projects/microgames-git/microgames.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/marino/Projects/microgames/microgames.csproj",
+        "projectUniqueName": "/home/marino/Projects/microgames-git/microgames.csproj",
         "projectName": "microgames",
-        "projectPath": "/home/marino/Projects/microgames/microgames.csproj",
+        "projectPath": "/home/marino/Projects/microgames-git/microgames.csproj",
         "packagesPath": "/home/marino/.nuget/packages/",
-        "outputPath": "/home/marino/Projects/microgames/obj/",
+        "outputPath": "/home/marino/Projects/microgames-git/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/marino/.nuget/NuGet/NuGet.Config"
@@ -37,6 +37,12 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Raylib-cs": {
+              "target": "Package",
+              "version": "[6.1.1, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
