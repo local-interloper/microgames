@@ -36,6 +36,12 @@ public class TestEntity : AbstractAnimatedEntity
         Scale = 5;
     }
 
+    public override void Start()
+    {
+        base.Start();
+        Position = new Vector2(100, 100);
+    }
+
     public override void Tick(double delta)
     {
         base.Tick(delta);

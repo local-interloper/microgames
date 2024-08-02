@@ -6,9 +6,6 @@ namespace engine.core;
 
 public class AbstractAnimatedEntity : AbstractSpatialEntity
 {
-    public float Scale = 1;
-    public float Rotation = 0;
-
     private Texture2D _atlas;
     private Dictionary<string, Animation> _animations = new();
     private AnimatedEnityData _data;
@@ -16,7 +13,7 @@ public class AbstractAnimatedEntity : AbstractSpatialEntity
     private Animation _currentAnimation;
 
 
-    public AbstractAnimatedEntity(AnimatedEnityData data, Vector2 position) : base(position)
+    public AbstractAnimatedEntity(AnimatedEnityData data, Vector2 position) : base()
     {
         _data = data;
         _atlas = AssetServer.GetTexture(data.AtlasPath);
@@ -71,12 +68,12 @@ public class AbstractAnimatedEntity : AbstractSpatialEntity
              },
             new Rectangle
             {
-                X = position.X,
-                Y = position.Y,
+                X = Position.X,
+                Y = Position.Y,
                 Width = _data.TileSize.X * Scale,
                 Height = _data.TileSize.Y * Scale,
             },
-            new Vector2(0, 0), // TODO: Implement origins
+            new Vector2(0, 0),
             Rotation,
             Color.White
         );
