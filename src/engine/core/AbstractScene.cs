@@ -1,4 +1,5 @@
 using System.Numerics;
+using System.Reflection.Metadata;
 using Raylib_cs;
 
 namespace engine.core;
@@ -8,6 +9,9 @@ public class AbstractScene
     private static HashSet<AbstractEntity> _entities = new();
     private static Queue<AbstractEntity> _destructionQueue = new();
     public RenderTexture2D SceneRenderTexture;
+
+    public Texture2D? Background;
+
     public AbstractScene(){
         SceneRenderTexture = Raylib.LoadRenderTexture(Engine.GameScreenWidth, Engine.GameScreenHeight);
         Raylib.SetTextureFilter(SceneRenderTexture.Texture, TextureFilter.Point);  // Texture scale filter to use
@@ -45,6 +49,9 @@ public class AbstractScene
         Raylib.ClearBackground(Color.Black);
         Raylib.DrawText("If executed inside a window,\nyou can resize the window,\nand see the screen scaling!", 10, 25, 20, Color.White);
         
+        if(Background is not null) {
+            Raylib.DrawTexture((Texture2D)Background, 0, 0, Color.White);
+        }
 
         foreach (var entity in _entities)
         {
