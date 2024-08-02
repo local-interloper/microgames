@@ -10,8 +10,10 @@ public static class Engine
 
     public static void Run()
     {
-        LoadScene(new TestScene());
         Raylib.InitWindow(1024, 1024, "microgames");
+        Raylib.SetTargetFPS(300);
+
+        LoadScene(new TestScene());
 
         Mainloop();
 

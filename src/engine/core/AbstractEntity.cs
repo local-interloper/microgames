@@ -5,6 +5,10 @@ public class AbstractEntity
     public AbstractEntity(){
 
     }
+
+    virtual public void Start() {
+
+    }
     
     virtual public void Render() {
 

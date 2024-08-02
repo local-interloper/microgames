@@ -10,6 +10,7 @@ public class AbstractScene
     public void AddEntity(AbstractEntity entity)
     {
         _entities.Add(entity);
+        entity.Start();
     }
 
     public void RemoveEntity(AbstractEntity entity)
