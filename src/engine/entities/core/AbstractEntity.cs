@@ -21,5 +21,9 @@ public class AbstractEntity
     virtual public void OnDestroy() {
 
     }
+
+    public void Destroy() {
+        Engine.Scene?.Destroy(this);
+    }
 }
 
