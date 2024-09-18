@@ -16,14 +16,17 @@ public static class Engine
     public static int GameScreenHeight = 1024;
     public static int InitWindowWidth = 1024;
     public static int InitWindowHeight = 1024;
+    public static bool StartFullScreen = true;
     public static void Run()
     {
         Raylib.SetConfigFlags(ConfigFlags.ResizableWindow);
-        Raylib.InitWindow(InitWindowWidth, InitWindowHeight, "microgames");
+        Raylib.InitWindow(
+            StartFullScreen ? Raylib.GetMonitorHeight(Raylib.GetCurrentMonitor()) : InitWindowWidth,
+            StartFullScreen ? Raylib.GetMonitorWidth(Raylib.GetCurrentMonitor()) : InitWindowHeight, "microgames"
+        );
         Raylib.SetTargetFPS(300);
-        Raylib.ToggleFullscreen();
-        Raylib.SetWindowSize(1920, 1080);
         Raylib.MaximizeWindow();
+        Raylib.ToggleFullscreen();
 
         LoadScene(new MicrogamesScene());
 
@@ -53,6 +56,8 @@ public static class Engine
             Scene.Tick(Raylib.GetFrameTime());
 
             Scene.Render();
+
+            Console.WriteLine(Raylib.GetMonitorWidth(Raylib.GetCurrentMonitor()));
 
             Raylib.BeginDrawing();
             Raylib.ClearBackground(Color.Black);
